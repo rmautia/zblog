@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macro %}
+
+{%block content%}
+<div class="container" style="font-family: 'Indie+Flower', cursive;">
+<link href="https://fonts.googleapis.com/css?family=Indie+Flower|Ranga" rel="stylesheet">
+
+<div class="jumbotron text-center" style="background: url(https://robottip.com/wp-content/uploads/2018/10/Tips-for-Website-Blogging-in-Prescott-AZ.001.jpg); color: black; padding: 100px 25px; font-family: 'Indie Flower', cursive;">
+    <div class="row">
+    <h1>Entertainment Blogs</h1>
+    <hr>
+    <div class="row">
+        {{macro.displayPitches(pitches)}}
+    </div>
+</div>
+</div>
+{%endblock%}

@@ -1,0 +1,23 @@
+{% macro displayPitches(pitches_list)%}
+    {%for pitch in pitches_list%}
+
+        <div class="container items-align-center text-align-center">
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 review-card">
+            <div class="well well-lg" style="background: url(https://s.ftcdn.net/v2013/pics/all/curated/RKyaEDwp8J7JKeZWQPuOVWvkUjGQfpCx_cover_580.jpg?r=1a0fc22192d0c808b8bb2b9bcfbf4a45b1793687);">
+                <h4>{{pitch.pitch_title}}</h4>
+                <p>{{pitch.pitch_content| truncate(100)}}</p>
+                <p>Written by:  {{pitch.user.username}} <a href="/pitch/{{pitch.id}}" class="btn btn-primary pull-right">Read</a> </p>
+            </div>
+        </div>
+    </div>
+    {%endfor%}
+{%endmacro%}
+
+{%macro displayComments(comments_list)%}
+    {%for comment in comments_list%}
+        <div class="col-md-12">
+            <h5>{{comment.user.username}}</h5>
+            <p>{{comment.comment}}</p>
+        </div>
+    {%endfor%}
+{%endmacro%}
