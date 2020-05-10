@@ -17,6 +17,19 @@
     <p>What Is a Blog? The term "blog" is short for "weblog," which refers to an online journal. Blogs began as personal mini sites that people used to record their opinions, stories, and other writings as well as photos and videos. As the web has grown and changed, blogs have gained more recognition and merit.</p>
     <a href="{{url_for('main.new_pitch')}}" class="btn btn-success -center">Add Blog</a>
     </div>
+    <br>
+    <div class="card">
+        <div class="card-header">
+          Quote
+        </div>
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p>{{quote.quote}}</p>
+            <footer class="blockquote-footer"><cite title="Source Title">{{quote.author}}</cite></footer>
+          </blockquote>
+        </div>
+      </div>
     
 </div>
+
 {%endblock%}
