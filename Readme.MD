@@ -16,8 +16,8 @@ This app allows the user to follow favourite blogs, make posts and even delete t
 ##### Initialize a virtualenv
 ```
 $ pip install virtualenv
-$ virtualenv -p python3 env
-$ source env/bin/activate
+$ virtualenv -p python3 virtual
+$ source virtual/bin/activate
 ```
 
 ##### Install the dependencies

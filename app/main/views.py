@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect, url_for
-from ..request import get_quote
+from .requests import get_quote
 from . import main
-from ..models import Quote
+from models import Quote
 from .forms import BlogForm
 from flask_login import login_required
 
