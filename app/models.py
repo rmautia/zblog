@@ -64,14 +64,16 @@ class Blog(db.Model):
         blog = Blog.query.filter_by(id = self.id).first()
         comments = Comment.query.filter_by(blog_id = blog.id).order_by(Comment.posted.desc())
         return comments
-        
+
 class Comment(db.Model):
     __tablename__ = 'comments'
 
     id = db.Column(db.Integer,primary_key = True)
     comment = db.Column(db.String(1000))
+    title = db.Column(db.String(255))
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
-    blog = db.Column(db.Integer,db.ForeignKey("blogs.id"))
+    blog_id = db.Column(db.Integer,db.ForeignKey("blogs.id"))
+    posted = db.Column(db.DateTime,default=datetime.utcnow)
 
     def save_comment(self):
         db.session.add(self)
@@ -81,6 +83,10 @@ class Comment(db.Model):
     def get_comments(cls,blog):
         comments = Comment.query.filter_by(blog_id=blog).all()
         return comments
+    
+    def delete_comment(self):
+        db.session.delete(self)
+        db.session.commit()
 
 class PhotoProfile(db.Model):
     __tablename__ = 'profile_photos'
