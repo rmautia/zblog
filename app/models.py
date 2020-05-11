@@ -8,6 +8,14 @@ from datetime import datetime
 def load_user(user_id):
     return User.query.get(int(user_id))
 
+class Quote:
+    '''
+    Quote class to hold random quote
+    '''
+
+    def __init__(self, author, quote):
+        self.author = author
+        self.quote = quote
 class User(UserMixin,db.Model):
     __tablename__ = 'users'
 
@@ -52,10 +60,6 @@ class Blog(db.Model):
     dislikes = db.Column(db.Integer)
     comments = db.relationship('Comment',backref =  'blog_id',lazy = "dynamic")
 
-    def save_blog(self):
-        db.session.add(self)
-        db.session.commit()
-
     def delete_blog(self):
         db.session.delete(self)
         db.session.commit()
@@ -94,6 +98,13 @@ class PhotoProfile(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     pic_path = db.Column(db.String())
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+
+class Subscriber(db.Model):
+    __tablename__ = 'subscribers'
+
+    id = db.Column(db.Integer, primary_key = True)
+    email = db.Column(db.String(255))
+    username = db.Column(db.String(255), index = True)
 
 
     

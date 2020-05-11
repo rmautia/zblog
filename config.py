@@ -6,8 +6,7 @@ class Config:
 
     '''
 
-    QUOTES_API_URL='http://quotes.stormconsultancy.co.uk/random.json'
-    SECRET_KEY = os.environ.get('SECRET_KEY')
+    #QUOTES_API_URL='http://quotes.stormconsultancy.co.uk/random.json'
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://raphael:Thejourney1.@localhost/blog'
     UPLOADED_PHOTOS_DEST ='app/static'
     SQLALCHEMY_TRACK_MODIFICATIONS = True
@@ -17,6 +16,10 @@ class Config:
     MAIL_USE_TLS = True
     MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
+
+    @staticmethod
+    def init_app(app):
+        pass
 
 class ProdConfig(Config):
     '''
@@ -34,7 +37,7 @@ class TestConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://raphael:Thejourney1.@localhost/blog'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://raphael:Thejourney1.@localhost/blog_test'
 
 class DevConfig(Config):
     '''
@@ -46,7 +49,7 @@ class DevConfig(Config):
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://raphael:Thejourney1.@localhost/blog'
 
     DEBUG = True
-    ENV = 'development'
+
     
 config_options = {
 'development':DevConfig,

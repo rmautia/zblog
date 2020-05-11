@@ -1,2 +1,3 @@
 API_URL = 'http://quotes.stormconsultancy.co.uk/random.json'
-SECRET_KEY = 'ranaya'
+MAIL_USERNAME='raphaelnyangenya@gmail.com'
+MAIL_PASSWORD='Raphaelite2019.'

@@ -1,5 +1,5 @@
-export SECRET_KEY='Piecekeep'
-export MAIL_USERNAME='vynnellee@gmail.com'
-export MAIL_PASSWORD='rock1ville8523'
+export QUOTES_API_URL=http://quotes.stormconsultancy.co.uk/random.json
+export MAIL_USERNAME=raphaelnyangenya@gmail.com
+export MAIL_PASSWORD=Raphaelite2019.
 
-python manage.py server
+python3.7 manage.py server

@@ -1,9 +1,12 @@
 from flask import render_template, request, redirect, url_for
-from .requests import get_quote
+from ..requests import get_quote
 from . import main
-from models import Quote
-from .forms import BlogForm
-from flask_login import login_required
+from ..model import quote
+from ..models import User, Blog, Subscriber, Comment
+from .forms import BlogForm, CommentForm, UpdateProfile
+from flask_login import login_required, current_user
+from .. import db, photos
+from ..email import mail_message
 
 @main.route('/')
 def index():
@@ -11,9 +14,10 @@ def index():
     '''
     View root page function that returns the index page and its data
     '''
-    title = 'Jabulani - There\'s a story in everything'
+    title = 'Ji-express - There\'s more to what is said than how its said'
     quote = get_quote()
-    return render_template('index.html', title=title, quote=quote)
+    blogs = Blog.query.all()
+    return render_template('blog.html', title=title, quote=quote, blogs = blogs )
 
 @main.route('/user/<uname>')
 def profile(uname):

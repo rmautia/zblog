@@ -1,10 +1,11 @@
 from flask import render_template, redirect, request, url_for, flash
 from flask_login import login_user, logout_user, login_required, current_user
 from . import auth
-from ..models import User
+from ..models import User, Subscriber
 from .forms import LoginForm, RegistrationForm, ChangePasswordForm, PasswordResetRequestForm, PasswordResetForm, ChangeEmailForm
 from .. import db
-from ..email import send_email
+from ..email import mail_message
+
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
@@ -18,10 +19,10 @@ def login():
 	return render_template('auth/login.html', form=form)
 
 
-# @auth.before_app_request
-# def before_request():
-# 	if current_user.is_authenticated() and not current_user.confirmed and request.endpoint[:5] != 'auth.':
-# 		return redirect(url_for('auth.unconfirmed'))
+@auth.before_app_request
+def before_request():
+	if current_user.is_authenticated() and not current_user.confirmed and request.endpoint[:5] != 'auth.':
+		return redirect(url_for('auth.unconfirmed'))
 
 
 @auth.route('/unconfirmed')

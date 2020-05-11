@@ -1,6 +1,6 @@
 from flask import render_template
 from app import app
-from .request import get_quote
+#from .request import get_quote
 
 @app.route('/')
 def index():
