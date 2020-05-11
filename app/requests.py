@@ -1,6 +1,6 @@
 from .main import main
 import urllib.request, json
-from .model import Quote
+from .models import Quote
 
 def get_quote():
     '''

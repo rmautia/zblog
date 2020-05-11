@@ -6,9 +6,8 @@ class Config:
 
     '''
 
-    #QUOTES_API_URL='http://quotes.stormconsultancy.co.uk/random.json'
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://raphael:Thejourney1.@localhost/blog'
-    UPLOADED_PHOTOS_DEST ='app/static'
+    SECRET_KEY = 'ranayapostblog'
+    UPLOADED_PHOTOS_DEST ='app/static/photos'
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     # email configurations
     MAIL_SERVER = 'smtp.gmail.com'
@@ -17,10 +16,11 @@ class Config:
     MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
 
-    @staticmethod
-    def init_app(app):
-        pass
+    # simple mde  configurations
+    SIMPLEMDE_JS_IIFE = True
+    SIMPLEMDE_USE_CDN = True
 
+    
 class ProdConfig(Config):
     '''
     Production  configuration child class

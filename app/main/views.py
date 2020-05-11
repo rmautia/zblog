@@ -17,7 +17,7 @@ def index():
     title = 'Ji-express - There\'s more to what is said than how its said'
     quote = get_quote()
     blogs = Blog.query.all()
-    return render_template('blog.html', title=title, quote=quote, blogs = blogs )
+    return render_template('index.html', title=title, quote=quote, blogs = blogs )
 
 @main.route('/user/<uname>')
 def profile(uname):

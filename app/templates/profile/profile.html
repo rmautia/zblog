@@ -23,11 +23,6 @@
                     {% endif %}
             </div>
         </div>
-        <div class="col-md-9">
-            <p>Name: {{user.firstname}} {{user.lastname}} </p>
-            <p>No of piches: {{pitches}}</p>
-            <p>Date joined: {{date}}</p>
-        </div>
     </div>
     <div class="row">
         <div class="col-md-12">
@@ -45,5 +40,37 @@
           {% endif %}
         </div>
     </div>
+</div>
+<br>
+
+<br>
+<div class="row">
+    <h3 class="text-center title">Blogs</h3>
+
+            {% if blogs %}
+            <div class="row ">
+                {% for blog in blogs %}
+                <div class="col-md-3 card-group">
+                    <h3 class="source-name">{{blog.title | upper}}</h3>
+                    <div class="white">
+                      <p>Posted by <strong> {{blog.user.username}}</strong></p>
+                      <p>Date: <strong>{{blog.posted.strftime('%Y-%m-%d')}}</strong></p>
+                      <p>"{{blog.message}}"</p>
+                      <a href="{{url_for('main.del_blog',uname=user.username, blog_id = blog.id)}}"><button type="button" name="button" class="btn btn-warning">Delete Blog post</button></a>
+                    </div>
+                </div>
+                {% endfor %}
+
+            {% else %}
+            <h2>You have no Blogs</h2>
+            {% endif %}
+          </div>
+  </div>
+  <div class="row text-center">
+    <br>
+    <a href="{{url_for('main.new_blog',uname=user.username)}}"> <button type="button" name="button" class="btn btn-warning"> Add a New Blog</button></a>
+  </div>
+  <br>
+  <br>
 </div>
 {% endblock %}

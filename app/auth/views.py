@@ -19,10 +19,10 @@ def login():
 	return render_template('auth/login.html', form=form)
 
 
-@auth.before_app_request
-def before_request():
-	if current_user.is_authenticated() and not current_user.confirmed and request.endpoint[:5] != 'auth.':
-		return redirect(url_for('auth.unconfirmed'))
+# @auth.before_app_request
+# def before_request():
+# 	if current_user.is_authenticated() and not current_user.confirmed and request.endpoint[:5] != 'auth.':
+# 		return redirect(url_for('auth.unconfirmed'))
 
 
 @auth.route('/unconfirmed')
