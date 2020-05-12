@@ -2,7 +2,7 @@
 
 Post, Like Comment and Insire others. 
 
-This app allows the user to follow favourite blogs, make posts and even delete them. found only at:
+This app allows the user to follow favourite blogs, make posts and even delete them. found only at:https://bloggy-z.herokuapp.com/
 
 
 ### What's included
