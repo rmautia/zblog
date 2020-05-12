@@ -37,7 +37,7 @@ def register():
             mail_message("Welcome to Bloggy, where every story is worth sharing","email/welcome_user",user.email,user=user)
 
         return redirect(url_for('auth.login'))
-        title = "Jabulani - New Account"
+        title = "New Account"
     return render_template('auth/signup.html', signup_form = form)
 
 @auth.route('/logout')
