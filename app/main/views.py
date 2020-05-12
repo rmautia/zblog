@@ -126,8 +126,8 @@ def new_review(blog_id):
     comment = Comment()
 
     if flask_form.validate_on_submit():
-        comment.title = form.title.data
-        comment.comment = form.comment.data
+        comment.title = blog.title
+        comment.comment = flask_form.comment.data
         comment.blog_id = blog_id
         comment.user_id = current_user.id
 
@@ -145,3 +145,11 @@ def mainstream_blogs():
     blogs = Blog.query.all()
 
     return render_template("mainstream.html", blogs = blogs)
+
+@main.route('/comment/<int:id>')
+def single_comment(id):
+    comment=Comment.query.get(id)
+    if comment is None:
+        abort(404)
+    format_comment = markdown2.markdown(comment.blog_comment,extras=["code-friendly", "fenced-code-blocks"])
+    return render_template('comment.html',comment = comment,format_comment=format_comment)

@@ -32,6 +32,10 @@
           <td>{{comment.user.username}}</td>
           <td><a href="{{url_for('main.del_comment',blog_id = comment.blog_id, comment_id = comment.id)}}"><button type="button" name="button" class="btn btn-danger btn-sm">Delete Comment</button></a></td>
         </tr>
+        <div class="col-xs-10 col-sm-10 col-md-8 col-lg-8">
+            <h2> <a href="{{url_for('main.single_comment',id=comment.id)}}">{{comment.blog_title}}</a> </h2>
+          </div>
       </table>
+      
     {%endfor%}
 {%endmacro%}
