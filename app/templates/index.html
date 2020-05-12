@@ -52,7 +52,7 @@
               <hr>
             <p class="card-text"> by: {{blog.user.username}}</p>
               {% if current_user.is_authenticated %}
-                <a class="comment" href="{{url_for('main.comments',blog_id = blog.id)}}"> <button type="button" name="button" class="btn btn-warning">comment</button> </a>
+                <a class="comment" href="{{url_for('main.comments',blog_id = blog.id)}}"> <button type="button" name="button" class="btn btn-primaary">comment</button> </a>
                 {% endif %}
           </div>
           <div class="card-footer text-muted" style="color: chartreuse; font-size: larger;" >Posted on:
