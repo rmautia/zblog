@@ -34,7 +34,7 @@ def register():
             db.session.add(subscriber)
             db.session.commit()
 
-            mail_message("Welcome to Jabulani, where there's a story in everything","email/welcome_user",user.email,user=user)
+            mail_message("Welcome to Bloggy, where every story is worth sharing","email/welcome_user",user.email,user=user)
 
         return redirect(url_for('auth.login'))
         title = "Jabulani - New Account"
