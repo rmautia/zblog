@@ -104,7 +104,6 @@ def comments(blog_id):
     blog = Blog.query.filter_by(id = blog_id).first()
     comments = Comment.query.filter_by(blog_id = blog.id).order_by(Comment.posted.desc())
 
-
     return render_template('comments.html', blog = blog, comments = comments)
 
 @main.route('/comment/delete/<blog_id>/<comment_id>')
@@ -122,11 +121,11 @@ def del_comment(blog_id, comment_id):
 @main.route('/blog/comment/new/<blog_id>', methods = ['GET', 'POST'])
 @login_required
 def new_review(blog_id):
-    form = CommentForm()
+    flask_form = CommentForm()
     blog = Blog.query.filter_by(id = blog_id).first()
     comment = Comment()
 
-    if form.validate_on_submit():
+    if flask_form.validate_on_submit():
         comment.title = form.title.data
         comment.comment = form.comment.data
         comment.blog_id = blog_id
@@ -137,4 +136,12 @@ def new_review(blog_id):
 
         return redirect(url_for('main.comments', blog_id=blog.id ))
 
-    return render_template('new_comment.html', comment_form = form)
+    return render_template('new_comment.html', comment_form = flask_form)
+
+
+@main.route('/blog/mainstream_blogs')
+def mainstream_blogs():
+
+    blogs = Blog.query.all()
+
+    return render_template("mainstream.html", blogs = blogs)

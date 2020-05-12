@@ -1,4 +1,0 @@
-Hello {{user.username}}
-Welcome to my blog space 
-You have now signed up for the application and can now start sharing your blogs to everyone.
-Indulge and enjoy.

@@ -11,39 +11,60 @@
 {%endblock%}
 <!-- Content block -->
 {%block content%}
-<div class="container-fluid text-center " style="background: url(https://www.hallaminternet.com/wp-content/uploads/2020/01/Is-blogging-relevant-anymore.jpeg) no-repeat ;background-size: cover; color:aqua; padding: 220px">
+<div class="container-fluid text-center " style="background: url(https://www.hallaminternet.com/wp-content/uploads/2020/01/Is-blogging-relevant-anymore.jpeg) no-repeat ;background-size: cover; color:aqua; padding: 170px">
     <div class="row min-vh-100">
     <h1><strong><em>Blogging</em></strong>✍️📖👨‍💻</h1>
     <p>What Is a Blog? The term "blog" is short for "weblog," which refers to an online journal. Blogs began as personal mini sites that people used to record their opinions, stories, and other writings as well as photos and videos. As the web has grown and changed, blogs have gained more recognition and merit.</p>
-    <a href="{{url_for('main.new_blog')}}" class="btn btn-success -center">Add Blog</a>
     </div>
     
 </div>
 
 <!-- Content block -->
 
-<div class="container" style="font-family: 'Indie Flower', cursive;">
-    <div class="row">
-        <h3>{{blog.blog_title}}</h3>
-        <hr>
-        <p>{{blog.blog_content}}</p>
-        <span>
-        <p>Posted on {{date}} by {{blog.user.username| capitalize}}</p>
-        <a href="/blog/{{blog.id}}?like=1">
-            <i class="far fa-thumbs-up"></i>
-        </a>{{blog.likes}} <a href="/blog/{{blog.id}}?dislike=1">
-            <i class="far fa-thumbs-down"></i>
-        </a>{{blog.dislikes}}</span>
-
+<div class="container-fluid" style="font-family: 'Indie Flower', cursive; background-color: dimgrey;">
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header" style="font-size: x-large; color: darkred;">
+        Quote
+      </div>
+      <div class="card-body" style="background: url(https://blog.hyperiondev.com/wp-content/uploads/2018/12/Blog-Tech-Hubs.jpg) no-repeat ;background-size: cover; color: yellow; font-size: xx-large; ">
+        <blockquote class="blockquote mb-0">
+          <p>{{quote.quote}}</p>
+          <footer class="blockquote-footer">By <cite title="Source Title">{{quote.author}}</cite></footer>
+        </blockquote>
+      </div>
     </div>
-    <div class="row">
-        <h4>Comments</h4>
-        <hr>
-        {% if current_user.is_authenticated %}
-            {{ wtf.quick_form(comment_form) }}
-        {%endif%}
-        {{macro.displayComments(comments)}}
-    </div>
-
+  </div>
+  <div class="col-md-2"></div>
+</div>
+{% if blogs %}
+  <h2 class="title text-center">BLOGPOSTS</h2>
+  {% for blog in blogs %}
+    <div class="col-md-6">
+      <div class="card text-center">
+          <div class="card-header">
+              <h3>{{blog.title}}</h3>
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{blog.message}}</p>
+              <hr>
+            <p class="card-text"> by: {{blog.user.username}}</p>
+              {% if current_user.is_authenticated %}
+                <a class="comment" href="{{url_for('main.comments',blog_id = blog.id)}}"> <button type="button" name="button" class="btn btn-warning">comment</button> </a>
+                {% endif %}
+          </div>
+          <div class="card-footer text-muted">Posted on:
+            {{blog.posted.strftime('%Y-%m-%d')}}
+            </div>
+          </div><br>
+        </div><br>
+    {% endfor %}
+{% else %}
+<h2 class="text-center title">There are no Blogs</h2>
+{% endif %}
+</div>
+</div>
 </div>
 {%endblock%}
