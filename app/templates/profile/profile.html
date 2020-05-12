@@ -1,7 +1,7 @@
 {% extends 'base.html'%}
 
 {% block content %}
-<div class="container">
+<div class="container-fluid " style="background: url(https://www.jennyboonewebstudio.com/wp-content/uploads/2018/01/blogStockPic.jpg) no-repeat; background-size: cover; font-size: large; color: crimson;">
     <div class="row">
         <!-- displaying  Username-->
         <h3> {{user.username| capitalize}} </h3>
@@ -36,15 +36,12 @@
           {% endif %}
 
           {% if user == current_user %}
-          <a href="{{url_for('main.update_profile',uname=user.username)}}">Edit profile</a>
+          <a href="{{url_for('main.update_profile',uname=user.username)}} " style="color: crimson; background: cyan;"> <button type="button" class="btn">Edit profile</button></a>
           {% endif %}
         </div>
     </div>
 </div>
-<br>
-
-<br>
-<div class="row">
+<div class="row" style="background-color: indianred;background-size: cover; color: aqua;">
     <h3 class="text-center title">Blogs</h3>
 
             {% if blogs %}
@@ -65,11 +62,13 @@
             <h2>You have no Blogs</h2>
             {% endif %}
           </div>
+
+          <div class="row text-center">
+            <br>
+            <a href="{{url_for('main.new_blog',uname=user.username)}}"> <button type="button" name="button" class="btn btn-warning"> Add a New Blog</button></a>
+          </div>
   </div>
-  <div class="row text-center">
-    <br>
-    <a href="{{url_for('main.new_blog',uname=user.username)}}"> <button type="button" name="button" class="btn btn-warning"> Add a New Blog</button></a>
-  </div>
+  
   <br>
   <br>
 </div>
