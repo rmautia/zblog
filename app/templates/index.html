@@ -21,12 +21,12 @@
 
 <!-- Content block -->
 
-<div class="container-fluid" style="font-family: 'Indie Flower', cursive; background-color: dimgrey;">
+<div class="container-fluid" style="font-family: 'Cormorant Upright', cursive; background-color: brown;">
 <div class="row">
   <div class="col-md-2"></div>
   <div class="col-md-8">
     <div class="card">
-      <div class="card-header" style="font-size: x-large; color: darkred;">
+      <div class="card-header" style="font-size: x-large;   background-color: darkred;">
         Quote
       </div>
       <div class="card-body" style="background: url(https://blog.hyperiondev.com/wp-content/uploads/2018/12/Blog-Tech-Hubs.jpg) no-repeat ;background-size: cover; color: yellow; font-size: xx-large; ">
@@ -40,14 +40,14 @@
   <div class="col-md-2"></div>
 </div>
 {% if blogs %}
-  <h2 class="title text-center">BLOGPOSTS</h2>
+  <h2 class="title text-center" style="color: aqua;">BLOGPOSTS</h2>
   {% for blog in blogs %}
     <div class="col-md-6">
       <div class="card text-center">
           <div class="card-header">
               <h3>{{blog.title}}</h3>
           </div>
-          <div class="card-body">
+          <div class="card-body" style="color: aqua;">
             <p class="card-text">{{blog.message}}</p>
               <hr>
             <p class="card-text"> by: {{blog.user.username}}</p>
@@ -55,7 +55,7 @@
                 <a class="comment" href="{{url_for('main.comments',blog_id = blog.id)}}"> <button type="button" name="button" class="btn btn-warning">comment</button> </a>
                 {% endif %}
           </div>
-          <div class="card-footer text-muted">Posted on:
+          <div class="card-footer text-muted" style="color: chartreuse; font-size: larger;" >Posted on:
             {{blog.posted.strftime('%Y-%m-%d')}}
             </div>
           </div><br>

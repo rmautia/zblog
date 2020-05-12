@@ -6,7 +6,7 @@ class Config:
 
     '''
     QUOTE_URL = 'http://quotes.stormconsultancy.co.uk/random.json'
-    SECRET_KEY = 'ranayapostblog'
+    SECRET_KEY = os.environ.get('SECRET_KEY')
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://raphael:Thejourney1.@localhost/blog'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
     SQLALCHEMY_TRACK_MODIFICATIONS = True
@@ -20,10 +20,6 @@ class Config:
     # simple mde  configurations
     SIMPLEMDE_JS_IIFE = True
     SIMPLEMDE_USE_CDN = True
-    @staticmethod
-    def init_app(app):
-        pass
-
     
 class ProdConfig(Config):
     '''
@@ -54,6 +50,8 @@ class DevConfig(Config):
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://raphael:Thejourney1.@localhost/blog'
 
     DEBUG = True
+    
+
     
     
 config_options = {
